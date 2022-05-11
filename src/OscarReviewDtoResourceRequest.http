@@ -1,0 +1,196 @@
+/**
+ * @author Youngjae Lee
+ * @version 2022-02-13
+ *
+ * description: Manual testing class
+ --------------------------------------------------------------------------------------------
+ *       Test plan
+
+ *       Test case 1: Read All entity
+
+ *       Test data
+
+         url: http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews
+
+ *       Expected result
+
+         Status Code: 200
+         Response Body: {
+                            "category": "film",
+                            "createdDateTime": "2021-02-25T08:00:08",
+                            "id": 1,
+                            "lastModifiedDateTime": "2021-02-25T08:15:08",
+                            "nominee": "Bong Joon-ho",
+                            "review": "Parasite!!",
+                            "username": "Robert Downey Jr",
+                            "version": 0
+                         },
+                         {
+                            "category": "actor",
+                            "createdDateTime": "2021-02-25T08:00:08",
+                            "id": 2,
+                            "lastModifiedDateTime": "2021-02-25T08:15:08",
+                            "nominee": "Lee Jung-jae",
+                            "review": "Squid game!!",
+                            "username": "Youngjae Lee",
+                            "version": 0
+                          },
+                          {
+                            "category": "actress",
+                            "createdDateTime": "2021-02-25T08:00:08",
+                            "id": 3,
+                            "lastModifiedDateTime": "2021-02-25T08:15:08",
+                            "nominee": "HoYeon Jung",
+                            "review": "Squid game!!",
+                            "username": "Youngjae Lee",
+                            "version": 0
+                          },
+                          {
+                            "category": "actor",
+                            "createdDateTime": "2021-02-25T08:00:08",
+                            "id": 4,
+                            "lastModifiedDateTime": "2022-02-15T11:14:13.440172",
+                            "nominee": "YANG Jin-mo",
+                            "review": "Best korean actor!",
+                            "username": "Youngjae Lee",
+                            "version": 0
+                           }
+ --------------------------------------------------------------------------------------------
+ *       Test case 2: Create new entity
+
+ *       Test data
+
+         url: http://localhost:8080//dmit2015-assignment03-youngjaelee/webapi/OscarReviews
+         id: 5
+         category: actor
+         nominee: Park Solomon
+         review: All of us are dead!!
+         username: Tom Hanks
+         version: 0
+
+ *       Expected result
+
+         Status Code: 201
+         Location: http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/11
+--------------------------------------------------------------------------------------------
+ *       Test case 3: Create new entity with invalid data
+
+ *       Test data
+
+         url: http://localhost:8080//dmit2015-assignment03-youngjaelee/webapi/OscarReviews
+         id: -1
+         category: empty string
+         nominee: empty string
+         review: empty string
+         username: Youngjae   Leeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+         version: -1
+
+ *       Expected result
+
+         Status Code: 400
+         Response Body: {
+                            "category": "Category is required"
+                            "nominee": "Nominee is required",
+                            "review": "You must type review"
+                            "username": "size must be between 1 and 30",
+                        }
+ --------------------------------------------------------------------------------------------
+ *       Test case 4: Read one entity by id
+
+ *       Test data
+
+         url: http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/1
+
+ *       Expected result
+
+         Status Code: 200
+         Response Body: {
+                            "id": 1,
+                            "category": "film",
+                            "nominee": "Bong Joon-ho",
+                            "review": "Parasite!!",
+                            "username": "Robert Downey Jr",
+                            "createdDateTime": "2021-02-25T08:00:08",
+                            "lastModifiedDateTime": "2021-02-25T08:15:08",
+                            "version": 0
+                        }
+ --------------------------------------------------------------------------------------------
+ *       Test case 5: Update entity by id
+
+ *       Test data
+
+         url: http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/1
+         id: 1
+         category: actor
+         nominee: Lee Jung-jae
+         review: Best korean actor!
+         username: Youngjae Lee
+         version: 1
+
+ *       Expected result
+
+         Status Code: 200
+ --------------------------------------------------------------------------------------------
+ *       Test case 6: Delete entity by id
+
+ *       Test data
+
+         url: http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/1
+
+ *       Expected result
+
+         Status Code: 204
+ --------------------------------------------------------------------------------------------
+ */
+
+
+
+### Get all OscarReviews
+GET http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews
+
+### POST a new OscarReview with valid data
+POST http://localhost:8080//dmit2015-assignment03-youngjaelee/webapi/OscarReviews
+Content-Type: application/json
+
+{
+  "id": 5,
+  "category": "actor",
+  "nominee": "Park Solomon",
+  "review": "All of us are dead!!",
+  "username": "Tom Hanks",
+  "version": 0
+}
+
+### Post a new OscarReview with invalid data
+POST http://localhost:8080//dmit2015-assignment03-youngjaelee/webapi/OscarReviews
+Content-Type: application/json
+
+{
+  "id": -1,
+  "category": "",
+  "nominee": "",
+  "review": "",
+  "username": "Youngjae Leeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "version": -1
+}
+
+### Get a single OscarReview with an id of 1
+GET http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/2
+Content-Type: application/json
+
+### Update OscarReview with an id of 1
+PUT http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/2
+Content-Type: application/json
+
+{
+  "id": 2,
+  "category": "actor",
+  "nominee": "Lee-Jung-Jae",
+  "review": "Best korean actor!",
+  "username": "Youngjae Lee",
+  "version": 0
+}
+
+### Delete an OscarReview with an id of 1
+DELETE http://localhost:8080/dmit2015-assignment03-youngjaelee/webapi/OscarReviews/1
+

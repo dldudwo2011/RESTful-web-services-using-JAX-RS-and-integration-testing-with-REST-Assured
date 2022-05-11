@@ -1,0 +1,4 @@
+INSERT INTO OscarReviews(id,category,nominee,review,username,createdDateTime,lastModifiedDateTime, version) VALUES('1','film','Bong Joon-ho','Parasite!!','Robert Downey Jr','2021-02-25 08:00:08', '2021-02-25 08:15:08',0);
+INSERT INTO OscarReviews(id,category,nominee,review,username,createdDateTime,lastModifiedDateTime,version) VALUES('2','actor','Lee Jung-jae','Squid game!!','Youngjae Lee','2021-02-25 08:00:08', '2021-02-25 08:15:08',0);
+INSERT INTO OscarReviews(id,category,nominee,review,username,createdDateTime,lastModifiedDateTime,version) VALUES('3','actress','HoYeon Jung','Squid game!!','Youngjae Lee','2021-02-25 08:00:08', '2021-02-25 08:15:08',0);
+INSERT INTO OscarReviews(id,category,nominee,review,username,createdDateTime,lastModifiedDateTime,version) VALUES('4','editing','YANG Jin-mo','Parasite!!','Scarlett Johansson','2021-02-25 08:00:08', '2021-02-25 08:15:08',0);
